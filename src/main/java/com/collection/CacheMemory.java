@@ -19,6 +19,10 @@ public class CacheMemory {
     }
     return Collections.EMPTY_MAP;
   }
+  
+  public boolean contains(String input) {
+    return cache.containsKey(input);
+  }
 
   public Map<String, Map<Character, Long>> getCache() {
     return new HashMap<>(cache);

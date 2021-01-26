@@ -12,7 +12,8 @@ public class UniqueCharCounter {
     }
     
     Map<Character, Long> numberOfUniqueChars;
-    if (!(numberOfUniqueChars = cache.getCharsFromCache(input)).isEmpty()) {
+    if (cache.contains(input)) {
+      numberOfUniqueChars = cache.getCharsFromCache(input);
       return new Result(input, numberOfUniqueChars);
     }
     
