@@ -2,16 +2,14 @@ package com.collection;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.*;
 
-import java.lang.reflect.Field;
 import java.util.*;
 
 import org.junit.jupiter.api.*;
 import org.mockito.MockedStatic;
 
-class CounterTest {
+class UniqueCharCounterTest {
 
   UniqueCharCounter counter;
 
@@ -50,24 +48,44 @@ class CounterTest {
     assertThat(actual.size(), is(5));
   }
 
+//  @Test
+//  void getResultOfCounting_shouldPutInCacheOnce_whenTheSameInput() throws NoSuchFieldException, IllegalAccessException {
+//
+//    String input = "abc";
+//
+//    counter.getResultOfCounting(input);
+//    counter.getResultOfCounting(input);
+//    counter.getResultOfCounting(input);
+//
+//    Field privateField = UniqueCharCounter.class.getDeclaredField("cache");
+//    privateField.setAccessible(true);
+//
+//    CacheMemory cache = (CacheMemory) privateField.get(counter);
+//
+//    int expected = 1;
+//    int actual = cache.getCache().size();
+//
+//    assertEquals(expected, actual);
+//  }
+  
   @Test
-  void getResultOfCounting_shouldPutInCacheOnce_whenTheSameInput() throws NoSuchFieldException, IllegalAccessException {
-
+  void getResultOfCounting_shouldPutInCacheOnce_whenTheSameInput() {
     String input = "abc";
-
+    Map<Character, Long> chars = new LinkedHashMap<>();
+    chars.put('a', 1L);
+    chars.put('b', 1L);
+    chars.put('c', 1L);
+    
+    CacheMemory cacheMemoryMock = mock(CacheMemory.class);
+    counter = new UniqueCharCounter(cacheMemoryMock);
+    when(cacheMemoryMock.contains(input)).thenReturn(false).thenReturn(true).thenReturn(true);
+    
     counter.getResultOfCounting(input);
     counter.getResultOfCounting(input);
     counter.getResultOfCounting(input);
-
-    Field privateField = UniqueCharCounter.class.getDeclaredField("cache");
-    privateField.setAccessible(true);
-
-    CacheMemory cache = (CacheMemory) privateField.get(counter);
-
-    int expected = 1;
-    int actual = cache.getCache().size();
-
-    assertEquals(expected, actual);
+    
+    verify(cacheMemoryMock, times(1)).putResultInCache(input, chars);
+    verify(cacheMemoryMock, times(2)).getCharsFromCache(input); 
   }
 
   @Test
