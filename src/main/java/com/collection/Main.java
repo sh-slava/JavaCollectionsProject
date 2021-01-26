@@ -10,6 +10,6 @@ public class Main {
     Formatter formatter = new Formatter();
     Result result = counter.getResultOfCounting(test);
 
-    System.out.println(formatter.formatToPrinting(result));
+    System.out.println(formatter.format(result));
   }
 }

@@ -6,7 +6,7 @@ public class Formatter {
 
   private final String LINE_SEPARATOR = System.lineSeparator();
 
-  public String formatToPrinting(Result input) {
+  public String format(Result input) {
     StringBuilder result = new StringBuilder();
     String sentence = input.getSentence();
     Map<Character, Long> chars = input.getNumberOfChars();

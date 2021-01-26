@@ -44,7 +44,7 @@ class FormatterTest {
         + "\"d\" - 1" + LINE_SEPARATOR 
         + "\"!\" - 1" + LINE_SEPARATOR;
 
-    String actual = formatter.formatToPrinting(result);
+    String actual = formatter.format(result);
 
     assertEquals(expected, actual);
   }
@@ -59,7 +59,7 @@ class FormatterTest {
     String expected = 
           "Only spaces were entered: " + LINE_SEPARATOR 
         + "\" \" - 3" + LINE_SEPARATOR;
-    String actual = formatter.formatToPrinting(result);
+    String actual = formatter.format(result);
 
     assertEquals(expected, actual);
   }
@@ -84,7 +84,7 @@ class FormatterTest {
         + "\"/\" - 1" + LINE_SEPARATOR 
         + "\"*\" - 1" + LINE_SEPARATOR 
         + "\"$\" - 2"+ LINE_SEPARATOR;
-    String actual = formatter.formatToPrinting(result);
+    String actual = formatter.format(result);
 
     assertEquals(expected, actual);
   }
@@ -107,7 +107,7 @@ class FormatterTest {
         + "\"R\" - 1" + LINE_SEPARATOR 
         + "\"r\" - 1" + LINE_SEPARATOR 
         + "\"D\" - 2" + LINE_SEPARATOR;
-    String actual = formatter.formatToPrinting(result);
+    String actual = formatter.format(result);
 
     assertEquals(expected, actual);
   }
@@ -117,7 +117,7 @@ class FormatterTest {
     String input = "";
     Map<Character, Long> chars = new LinkedHashMap<>();
     Result result = new Result(input, chars);
-    assertThrows(RuntimeException.class, () -> formatter.formatToPrinting(result));
+    assertThrows(RuntimeException.class, () -> formatter.format(result));
   }
 
   @Test
@@ -125,6 +125,6 @@ class FormatterTest {
     String input = "ert";
     Map<Character, Long> chars = new LinkedHashMap<>();
     Result result = new Result(input, chars);
-    assertThrows(RuntimeException.class, () -> formatter.formatToPrinting(result));
+    assertThrows(RuntimeException.class, () -> formatter.format(result));
   }
 }
