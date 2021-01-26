@@ -1,6 +1,6 @@
 package com.collection;
 
-import java.util.Map;
+import java.util.*;
 
 public class UniqueCharCounter {
 
@@ -8,7 +8,7 @@ public class UniqueCharCounter {
 
   public Result getResultOfCounting(String input) {
     if (input.isEmpty()) {
-      throw new IllegalArgumentException("Empty string!");
+      return new Result(input, Collections.EMPTY_MAP);
     }
     
     Map<Character, Long> numberOfUniqueChars;
