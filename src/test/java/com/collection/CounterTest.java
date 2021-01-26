@@ -1,8 +1,8 @@
 package com.collection;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mockStatic;
 
 import java.lang.reflect.Field;
@@ -89,8 +89,9 @@ class CounterTest {
   }
 
   @Test
-  void getResultOfCounting_shouldThrowRuntimeException_whenEmptyStringInput() {
+  void getResultOfCounting_shouldReturnEmptyMap_whenEmptyStringInput() {
     String input = "";
-    assertThrows(IllegalArgumentException.class, () -> counter.getResultOfCounting(input));
+    Map<Character, Long> chars = counter.getResultOfCounting(input).getNumberOfChars();
+    assertThat(chars.values(), is(empty()));
   }
 }
