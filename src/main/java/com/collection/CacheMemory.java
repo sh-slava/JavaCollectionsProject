@@ -14,11 +14,10 @@ public class CacheMemory {
   }
 
   public Map<Character, Long> getCharsFromCache(String input) {
-    Map<Character, Long> result = new LinkedHashMap<>();
     if (cache.containsKey(input)) {
-      result = cache.get(input);
+      return cache.get(input);
     }
-    return result;
+    return Collections.EMPTY_MAP;
   }
 
   public Map<String, Map<Character, Long>> getCache() {
