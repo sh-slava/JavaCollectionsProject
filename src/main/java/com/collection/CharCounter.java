@@ -5,11 +5,7 @@ import java.util.stream.Collectors;
 
 public class CharCounter {
 
-  private CharCounter() {
-
-  }
-
-  public static Map<Character, Long> countUniqueChars(String input) {
+  public Map<Character, Long> countUniqueChars(String input) {
     Map<Character, Long> result;
 
     result = input.chars().mapToObj(symbol -> (char) symbol)
