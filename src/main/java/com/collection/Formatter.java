@@ -26,10 +26,7 @@ public class Formatter {
   }
 
   private void validateInput(String sentence, Map<Character, Long> chars) {
-    if (sentence.isEmpty()) {
-      throw new IllegalArgumentException("Empty string!");
-    }
-    if (chars.isEmpty()) {
+    if (sentence.isEmpty() || chars.isEmpty()) {
       throw new IllegalArgumentException("Empty string!");
     }
   }
