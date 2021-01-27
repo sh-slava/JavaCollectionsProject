@@ -20,22 +20,18 @@ public class UniqueCharCounter {
       return new Result(input, Collections.emptyMap());
     }
     
-    Map<Character, Long> numberOfUniqueChars;
     if (cache.contains(input)) {
-      numberOfUniqueChars = cache.getCharsFromCache(input);
-      return new Result(input, numberOfUniqueChars);
+      return new Result(input, cache.getCharsFromCache(input));
     }
     
-    numberOfUniqueChars = countUniqueChars(input);
+    Map<Character, Long> numberOfUniqueChars = countUniqueChars(input);
     cache.putResultInCache(input, numberOfUniqueChars);
     return new Result(input, numberOfUniqueChars);
   }
   
   private Map<Character, Long> countUniqueChars(String input) {
-    Map<Character, Long> result;
 
-    result = input.chars().mapToObj(symbol -> (char) symbol)
+    return input.chars().mapToObj(symbol -> (char) symbol)
         .collect(Collectors.groupingBy(symbol -> symbol, LinkedHashMap::new, Collectors.counting()));
-    return result;
   }
 }
