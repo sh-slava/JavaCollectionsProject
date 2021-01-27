@@ -20,8 +20,8 @@ public class Formatter {
       result.append(sentence).append(LINE_SEPARATOR);
     }
     
-    input.getNumberOfChars().entrySet().forEach(
-        entry -> result.append("\"" + entry.getKey() + "\"" + " - " + entry.getValue()).append(LINE_SEPARATOR));
+    input.getNumberOfChars().forEach((key, value) -> result.append("\"").append(key).append("\"").append(" - ").append(value)
+        .append(LINE_SEPARATOR));
     return result.toString();
   }
 
