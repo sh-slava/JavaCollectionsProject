@@ -111,7 +111,7 @@ class FormatterTest {
     String input = "";
     Map<Character, Long> chars = new LinkedHashMap<>();
     Result result = new Result(input, chars);
-    assertThrows(RuntimeException.class, () -> formatter.format(result));
+    assertThrows(IllegalArgumentException.class, () -> formatter.format(result));
   }
 
   @Test
@@ -119,6 +119,6 @@ class FormatterTest {
     String input = "ert";
     Map<Character, Long> chars = new LinkedHashMap<>();
     Result result = new Result(input, chars);
-    assertThrows(RuntimeException.class, () -> formatter.format(result));
+    assertThrows(IllegalArgumentException.class, () -> formatter.format(result));
   }
 }
