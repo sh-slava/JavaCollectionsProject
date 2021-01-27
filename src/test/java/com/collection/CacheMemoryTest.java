@@ -40,15 +40,14 @@ class CacheMemoryTest {
   
   @Test
   void contains_shouldReturnBoolean_whenCacheHasOrNotConformity() {
-    String input = "abc";
+    String input = "def";
     Map<Character, Long> expectedChars = new LinkedHashMap<>();
-    expectedChars.put('a', 1L);
-    expectedChars.put('b', 1L);
-    expectedChars.put('c', 1L);
+    expectedChars.put('d', 1L);
+    expectedChars.put('e', 1L);
+    expectedChars.put('f', 1L);
     cacheMemory.putResultInCache(input, expectedChars);
     
-    assertAll(
-        () -> assertEquals(expectedChars, cacheMemory.getCharsFromCache(input)), 
+    assertAll( 
         () -> assertEquals(true, cacheMemory.contains(input)),
         () -> assertEquals(false, cacheMemory.contains("differentInput"))
         );  
