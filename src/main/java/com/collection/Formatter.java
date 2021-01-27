@@ -8,7 +8,7 @@ public class Formatter {
 
   public String format(Result input) {
     StringBuilder result = new StringBuilder();
-    String sentence = input.getSentence();
+    String sentence = input.getInput();
     Map<Character, Long> chars = input.getNumberOfChars();
 
     validateInput(sentence, chars);
