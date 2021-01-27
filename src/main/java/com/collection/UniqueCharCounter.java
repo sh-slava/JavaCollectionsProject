@@ -30,7 +30,6 @@ public class UniqueCharCounter {
   }
   
   private Map<Character, Long> countUniqueChars(String input) {
-
     return input.chars().mapToObj(symbol -> (char) symbol)
         .collect(Collectors.groupingBy(symbol -> symbol, LinkedHashMap::new, Collectors.counting()));
   }

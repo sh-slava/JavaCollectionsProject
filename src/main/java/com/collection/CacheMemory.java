@@ -14,11 +14,8 @@ public class CacheMemory {
     cache.put(input, uniqueChars);
   }
 
-  public Map<Character, Long> getCharsFromCache(String input) {
-    if (cache.containsKey(input)) {
-      return cache.get(input);
-    }
-    return Collections.emptyMap();
+  public Map<Character, Long> getCharsFromCache(String input) {   
+    return cache.getOrDefault(input, Collections.emptyMap());
   }
   
   public boolean contains(String input) {
