@@ -30,14 +30,6 @@ class UniqueCharCounterTest {
 
     assertEquals(expected, actual);
   }
-
-  @Test
-  void getResultOfCounting_shouldHaveSameSize() {
-    Result result = counter.getResultOfCounting("abbccccdddeeeee");
-    Map<Character, Long> actual = result.getNumberOfChars();
-
-    assertEquals(5, actual.size());
-  }
   
   @Test
   void getResultOfCounting_shouldPutInCacheOnce_whenTheSameInput() {
