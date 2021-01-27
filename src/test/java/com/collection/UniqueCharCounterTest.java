@@ -1,6 +1,6 @@
 package com.collection;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.util.*;
@@ -56,5 +56,17 @@ class UniqueCharCounterTest {
     String input = "";
     Map<Character, Long> chars = counter.getResultOfCounting(input).getNumberOfChars();
     assertEquals(Collections.emptyMap(), chars);
+  }
+  
+  @Test
+  void getResultOfCounting_shouldReturnEmptyMap_whenNullInput() {
+    String input = null;
+    Result result = counter.getResultOfCounting(input);
+    
+    assertAll(
+        () -> assertEquals(Collections.emptyMap(), result.getNumberOfChars()),
+        () -> assertNull(result.getInput())
+        );
+    
   }
 }
