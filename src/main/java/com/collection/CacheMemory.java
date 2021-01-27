@@ -23,8 +23,4 @@ public class CacheMemory {
   public boolean contains(String input) {
     return cache.containsKey(input);
   }
-
-  public Map<String, Map<Character, Long>> getCache() {
-    return new HashMap<>(cache);
-  }
 }
