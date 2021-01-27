@@ -16,7 +16,7 @@ public class UniqueCharCounter {
   }
 
   public Result getResultOfCounting(String input) {
-    if (input.isEmpty()) {
+    if (input == null || input.isEmpty()) {
       return new Result(input, Collections.emptyMap());
     }
     
