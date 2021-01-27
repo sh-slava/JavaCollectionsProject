@@ -4,18 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 
 class FormatterTest {
 
   private final String LINE_SEPARATOR = System.lineSeparator();
   private Formatter formatter = new Formatter();
-  private UniqueCharCounter counter;
-
-  @BeforeEach
-  void init() {
-    counter = new UniqueCharCounter();
-  }
 
   @Test
   void formatToPrinting_shouldPrint_whenSimpleString() {

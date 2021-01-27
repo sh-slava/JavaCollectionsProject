@@ -17,7 +17,7 @@ public class CacheMemory {
     if (cache.containsKey(input)) {
       return cache.get(input);
     }
-    return Collections.EMPTY_MAP;
+    return Collections.emptyMap();
   }
   
   public boolean contains(String input) {

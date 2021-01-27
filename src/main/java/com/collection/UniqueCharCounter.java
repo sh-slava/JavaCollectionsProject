@@ -1,14 +1,23 @@
 package com.collection;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UniqueCharCounter {
 
-  private CacheMemory cache = new CacheMemory();
+  private CacheMemory cache;
+  
+  public UniqueCharCounter() {
+    this.cache = new CacheMemory();
+  }
+  
+  public UniqueCharCounter(CacheMemory cache) {
+    this.cache = cache;
+  }
 
   public Result getResultOfCounting(String input) {
     if (input.isEmpty()) {
-      return new Result(input, Collections.EMPTY_MAP);
+      return new Result(input, Collections.emptyMap());
     }
     
     Map<Character, Long> numberOfUniqueChars;
@@ -17,8 +26,16 @@ public class UniqueCharCounter {
       return new Result(input, numberOfUniqueChars);
     }
     
-    numberOfUniqueChars = CharCounter.countUniqueChars(input);
+    numberOfUniqueChars = countUniqueChars(input);
     cache.putResultInCache(input, numberOfUniqueChars);
     return new Result(input, numberOfUniqueChars);
+  }
+  
+  private Map<Character, Long> countUniqueChars(String input) {
+    Map<Character, Long> result;
+
+    result = input.chars().mapToObj(symbol -> (char) symbol)
+        .collect(Collectors.groupingBy(symbol -> symbol, LinkedHashMap::new, Collectors.counting()));
+    return result;
   }
 }
