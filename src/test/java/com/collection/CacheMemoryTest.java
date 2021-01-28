@@ -48,8 +48,8 @@ class CacheMemoryTest {
     cacheMemory.putResultInCache(input, expectedChars);
     
     assertAll( 
-        () -> assertEquals(true, cacheMemory.contains(input)),
-        () -> assertEquals(false, cacheMemory.contains("differentInput"))
+        () -> assertTrue(cacheMemory.contains(input)),
+        () -> assertFalse(cacheMemory.contains("differentInput"))
         );  
   }
 }
